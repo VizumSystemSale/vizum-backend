@@ -9,7 +9,7 @@ load_dotenv()
 app = FastAPI(title="Vizum System Sale", description="Автоматизированная AI-платформа для e-commerce")
 
 # Безопасность: все API ключи берутся только из .env и нигде не отображаются на клиенте
-if not os.getenv("OPENAI_API_KEY") or not os.getenv("SHOPIFY_API_KEY"):
+if not os.getenv("OPENAI_API_KEY") or not os.getenv("SHOPIFY_ACCESS_TOKEN"):
     raise RuntimeError("Ключи API не установлены. Убедитесь, что .env файл заполнен.")
 
 # Подключение frontend статики (мультиязычный лендинг)
