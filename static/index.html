@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIZUM System Sale</title>
+</head>
+<body>
+    <h1>Welcome to VIZUM System Sale</h1>
+    <button onclick="startTrial()">Начать бесплатно</button>
+    <button onclick="subscribe()">Оформить подписку $250</button>
+
+    <script>
+        async function startTrial() {
+            const userId = prompt('Введите свой user_id для триала:');
+            if (!userId) return;
+            const res = await fetch('/trial/activate_trial', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ user_id: userId })
+            });
+            const data = await res.json();
+            alert(JSON.stringify(data));
+        }
+
+        async function subscribe() {
+            const userId = prompt('Введите свой user_id для подписки:');
+            if (!userId) return;
+            const res = await fetch('/subscribe/subscribe_user', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ user_id: userId })
+            });
+            const data = await res.json();
+            alert(JSON.stringify(data));
+        }
+    </script>
+</body>
+</html>
