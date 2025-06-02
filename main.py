@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from routes import products, shopify, video, telegram, subscribe, trial, automation
+from routes import dropshipping
 from dotenv import load_dotenv
 import os
 
@@ -22,6 +23,7 @@ app.include_router(video.router, prefix="/video")
 app.include_router(telegram.router, prefix="/telegram")
 app.include_router(subscribe.router, prefix="/subscribe")
 app.include_router(trial.router, prefix="/trial")
+app.include_router(dropshipping.router, prefix="/integration")
 app.include_router(automation.router, prefix="/automation")
 
 # Локальный запуск (не используется на Render)
